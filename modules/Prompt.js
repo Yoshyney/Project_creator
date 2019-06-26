@@ -19,7 +19,7 @@ module.exports = {
           name: 'blih_settings',
           type: 'list',
           message: 'Quel action souhaiter vous realiser avec Blih ?',
-          choices: [ "Créer ou cloner un projet", "Voir vos projets", "Supprimer un projet", "Se connecter", "Retour" ]
+          choices: [ "Créer ou cloner un projet", "Ajouter des droits" , "Voir vos projets", "Supprimer un projet", "Se connecter", "Retour" ]
         }];
         return inquirer.prompt(settings);
       },
@@ -90,5 +90,56 @@ module.exports = {
           }
         ];
         return inquirer.prompt(create);
+      },
+      Show_all: (files) => {
+        const create = [
+          {
+            name: 'result',
+            type: 'list',
+            message: 'Cliquez sur un fichier pour modifier ou bien voir les acls :',
+            choices: files
+          }
+        ];
+        return inquirer.prompt(create);
+      },
+      set_get: (files) => {
+        const create = [
+          {
+            name: 'result',
+            type: 'list',
+            message: 'Cliquez sur un fichier pour modifier ou bien voir les acls :',
+            choices: ['Ajouter des acls', 'Supprimer des acls', 'Retour en arrière']
+          }
+        ];
+        return inquirer.prompt(create);
+      },
+    add_acl : () => {
+        const id = [
+          {
+            name: 'user',
+            type: 'input',
+            message: "Rentrez le nom d'un utilisateur ! : " ,
+            validate: function( value ) {
+              if (value.length) {
+                return true;
+              } else {
+                return "Entrer le nom d'un utilisateur  valide ! ";
+              }
+            }
+          },
+          {
+            name: 'acls',
+            type: 'input',
+            message: "Rentrez un droit d'utilisateur ! : ",
+            validate: function(value) {
+              if (value == "w" || value == "r" || value == "x" ||value == "rx" || value == "rw" || value == "xw" || value == "rxw") {
+                return true;
+              } else {
+                return "Entrer des droits d'utilisateur valide !  ";
+              }
+            }
+          }
+        ];
+        return inquirer.prompt(id);
       }
     }
