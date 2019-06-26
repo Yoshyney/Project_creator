@@ -19,7 +19,7 @@ module.exports = {
           name: 'blih_settings',
           type: 'list',
           message: 'Quel action souhaiter vous realiser avec Blih ?',
-          choices: [ "Créer un projet", "Voir vos projets", "Supprimer un projet", "Se connecter", "Retour" ]
+          choices: [ "Créer ou cloner un projet", "Voir vos projets", "Supprimer un projet", "Se connecter", "Retour" ]
         }];
         return inquirer.prompt(settings);
       },
@@ -57,7 +57,7 @@ module.exports = {
           {
             name: 'Project_name',
             type: 'input',
-            message: 'Nom du projet que vous voulez créer ! :',
+            message: 'Nom du projet que vous voulez créer ou git clone si déjà créer ! :',
             validate: function( value ) {
               if (value.length) {
                 return true;

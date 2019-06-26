@@ -26,7 +26,7 @@ const blih_ =  async () => {
   }else{
     const User = Api.Api_connexion(jsonData.blih);
     const settings = await prompt.blih_settings();
-    if(settings.blih_settings == "Créer un projet"){
+    if(settings.blih_settings == "Créer ou cloner un projet"){
       await Api.create_repository_blih(User);
       return blih_();
     }else if(settings.blih_settings == "Voir vos projets"){

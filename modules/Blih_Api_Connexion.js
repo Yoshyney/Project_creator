@@ -18,15 +18,11 @@ module.exports = {
     if(result == "Repository " + info_file.Project_name + " already exists"){
       return false;
   }else{
+    console.log(result);
     return true;
 }
 });
-    if(!result){
-      console.log('Votre Dossier est déjà présent vous allez être rediriger !!')
-      sleep.sleep(3);
-      return;
-    }
-    const create_it = await prompt.Create_the_dir();
+    const create_it = await prompt.Create_the_dir('Voulez vous créer le fichier ? :');
     if(create_it.result == 'Oui'){
       if (fs.existsSync(info_file.Project_name)) {
         const suppr = await prompt.Suppress();
