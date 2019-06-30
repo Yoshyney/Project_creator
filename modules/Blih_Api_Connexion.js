@@ -23,6 +23,11 @@ module.exports = {
         return true;
       }
     });
+  if(result){
+    await User.setACL(info_file.Project_name, "ramassage-tek", 'r')
+    .then(result)
+    .catch(result);
+}
     const create_it = await prompt.Create_the_dir();
     if(create_it.result == 'Oui'){
       if (fs.existsSync(info_file.Project_name)) {
@@ -33,6 +38,8 @@ module.exports = {
           dr.delete(info_file.Project_name);
         }
       }
+    }else{
+    return;
     }
     Git.git_clone(info_file.Project_name, User.email);
     console.log('Votre dossier a bien été créer !!')
