@@ -28,19 +28,16 @@ const blih_ =  async () => {
     const settings = await prompt.blih_settings();
     if(settings.blih_settings == "Créer ou cloner un projet"){
       await Api.create_repository_blih(User);
-      return blih_();
     }else if(settings.blih_settings == "Ajouter des droits"){
       await Api.set_acl(User);
-      return blih_();
-    }else if(settings.blih_settings == "Voir vos projets"){
     }else if(settings.blih_settings == "Supprimer un projet"){
-
+      await Api.delete_repo(User);
     }else if(settings.blih_settings == "Se connecter"){
-      const User = await co.ask_Connect();
-      return blih_();
+      await co.ask_Connect();
     }else if(settings.blih_settings == "Retour"){
       return run();
     }
+    return blih_();
   }
 }
 

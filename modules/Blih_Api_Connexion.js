@@ -46,7 +46,19 @@ module.exports = {
       return;
     }
     const acls = await get_acls(User , files.result);
-  }
+  },
+  delete_repo : async (User) => {
+    const tab = await get_all_files(User);
+    const files = await prompt.Show_all(tab);
+    if(files.result == 'Retour en arrière !'){
+      return;
+    }
+    await User.deleteRepository(files.result)
+    .then(console.log)
+    .catch(console.log);
+    sleep.sleep(3);
+    return;
+  },
 }
 
 const get_all_files = async (User) => {
