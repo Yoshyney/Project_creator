@@ -27,7 +27,7 @@
     "lodash": "^4.17.4",
     "minimist": "^1.2.0",
     "shelljs": "^0.8.3",
-    "simple-git": "^1.89.0",
+    "simple-git": "^3.15.0",
     "slee": "^1.2.2",
     "sleep": "^6.1.0",
     "touch": "^3.1.0"
